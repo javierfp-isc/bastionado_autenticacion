@@ -12,12 +12,12 @@ services:
     ipv4_address: 192.168.98.100
   volumes:
    - kerberosdata:/var/kerberos
- krbcli:
+ cliente:
   build:
     context: build
     args:
-     ENVPATH: krbcli.env
-  hostname: krbcli
+     ENVPATH: cliente.env
+  hostname: cliente
   networks:
    kerberos:
 networks:
