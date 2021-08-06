@@ -1,4 +1,4 @@
-PROJECT="openldap"
+PROJECT="kerberos"
 
 #Targets principales
 #install: vagrantup

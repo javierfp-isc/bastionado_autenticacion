@@ -1,0 +1,32 @@
+version: '3.5'
+services:
+#Services
+ kdc:
+  build:
+    context: build
+    args:
+     ENVPATH: kdc.env
+  hostname: kdc
+  networks:
+   kerberos:
+    ipv4_address: 192.168.98.100
+  volumes:
+   - kerberosdata:/var/kerberos
+ krbcli:
+  build:
+    context: build
+    args:
+     ENVPATH: krbcli.env
+  hostname: krbcli
+  networks:
+   kerberos:
+networks:
+  kerberos:
+    driver: bridge
+    driver_opts:
+     com.docker.network.bridge.name: auth_kerberos
+    ipam:
+     config:
+       - subnet: 192.168.98.0/24
+volumes:
+ kerberosdata:
