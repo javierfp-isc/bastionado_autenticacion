@@ -4,6 +4,7 @@ Repositorio para prácticas relacionadas con la seguridad en sistemas de autenti
 El repositorio consta de los siguentes escenarios
 
 * **openldap**: Escenario para prácticas de autenticación con openldap
+* **kerberos**: Escenario para prácticas de autenticación con kerberos
 
 ## Creación y gestión de los escenarios
 
