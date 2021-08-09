@@ -2,18 +2,14 @@ PROJECT="ad"
 
 #Targets principales
 install: vagrantup
-#install: composeup
 
 down: composedown vagrantdelete
 
 delete: composedelete vagrantdelete
-#delete: composedelete
 
 start: vagrantstart
-#start: composestart
 
 stop: vagrantstop
-#stop: composestop
 
 restart: stop start
 

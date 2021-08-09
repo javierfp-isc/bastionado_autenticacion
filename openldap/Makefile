@@ -1,15 +1,21 @@
 PROJECT="openldap"
+SERVICES=openldap cliente
 
 #Targets principales
-install: composeup
+install:
+	docker-compose -p ${PROJECT} -f compose/docker-compose.yml up -d
 
-down: composedown
+down:
+	docker-compose -p ${PROJECT} -f compose/docker-compose.yml down
 
-delete: composedelete
+delete:
+	docker-compose -p ${PROJECT} -f compose/docker-compose.yml down --rmi all -v
 
-start: composestart
+start:
+	docker-compose -p ${PROJECT} -f compose/docker-compose.yml start
 
-stop: composestop
+stop:
+	docker-compose -p ${PROJECT} -f compose/docker-compose.yml stop
 
 restart: stop start
 
@@ -21,21 +27,4 @@ info:
 
 ls:
 	docker-compose -p ${PROJECT} -f compose/docker-compose.yml ps
-
-#Requisitos
-composeup:	
-	docker-compose -p ${PROJECT} -f compose/docker-compose.yml up -d
-
-composedelete:
-	docker-compose -p ${PROJECT} -f compose/docker-compose.yml down --rmi all -v
-
-composedown:
-	docker-compose -p ${PROJECT} -f compose/docker-compose.yml down
-
-composestart:
-	docker-compose -p ${PROJECT} -f compose/docker-compose.yml start	
-
-composestop:
-	docker-compose -p ${PROJECT} -f compose/docker-compose.yml stop
-
 
