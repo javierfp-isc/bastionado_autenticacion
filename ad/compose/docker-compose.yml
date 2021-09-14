@@ -14,7 +14,7 @@ networks:
   linwin:
     driver: bridge
     driver_opts:
-     com.docker.network.bridge.name: test_linwin
+     com.docker.network.bridge.name: ad_linwin
     ipam:
      config:
        - subnet: 192.168.20.0/24
