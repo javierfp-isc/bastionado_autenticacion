@@ -38,7 +38,7 @@ Vagrant.configure("2") do |config|
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  config.vm.network "public_network", bridge: "ad_linwin", ip: "192.168.20.11", nic_type: "Am79C970A"
+  config.vm.network "public_network", bridge: "ad_linwin", ip: "192.168.20.11", nic_type: "82540EM"
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
@@ -70,6 +70,6 @@ Vagrant.configure("2") do |config|
   Set-WinSystemLocale -SystemLocale 'es-ES'
   Set-WinUserLanguageList -LanguageList (New-WinuserLanguageList -Language 'es-ES') -Force
   Add-WindowsFeature AD-Domain-Services
-  Invoke-Command -ScriptBlock {Import-Module ADDSDeployment;Install-ADDSForest -CreateDNSDelegation:$False -DatabasePath "C:\Windows\NTDS" -DomainMode "WinThreshold" -DomainName "bastionado.auth.ad" -DomainNetbiosName "bastionado" -ForestMode "WinThreshold" -InstallDNS:$True -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$False -SysVolPath "C:\Windows\SysVol" -force:$true -SafeModeAdministratorPassword (ConvertTo-SecureString "abc123." -AsPlainText -Force) }
+  Invoke-Command -20 ScriptBlock {Import-Module ADDSDeployment;Install-ADDSForest -CreateDNSDelegation:$False -DatabasePath "C:\Windows\NTDS" -DomainMode "WinThreshold" -DomainName "bastionado.auth.ad" -DomainNetbiosName "bastionado" -ForestMode "WinThreshold" -InstallDNS:$True -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$False -SysVolPath "C:\Windows\SysVol" -force:$true -SafeModeAdministratorPassword (ConvertTo-SecureString "abc123." -AsPlainText -Force) }
   SHELL
 end
