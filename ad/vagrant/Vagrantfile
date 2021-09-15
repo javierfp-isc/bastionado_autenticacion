@@ -70,6 +70,7 @@ Vagrant.configure("2") do |config|
   Set-WinSystemLocale -SystemLocale 'es-ES'
   Set-WinUserLanguageList -LanguageList (New-WinuserLanguageList -Language 'es-ES') -Force
   Add-WindowsFeature AD-Domain-Services
-  Invoke-Command -20 ScriptBlock {Import-Module ADDSDeployment;Install-ADDSForest -CreateDNSDelegation:$False -DatabasePath "C:\Windows\NTDS" -DomainMode "WinThreshold" -DomainName "bastionado.auth.ad" -DomainNetbiosName "bastionado" -ForestMode "WinThreshold" -InstallDNS:$True -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$False -SysVolPath "C:\Windows\SysVol" -force:$true -SafeModeAdministratorPassword (ConvertTo-SecureString "abc123." -AsPlainText -Force) }
+  Add-WindowsFeature RSAT-Role-Tools
+  Invoke-Command -ScriptBlock {Import-Module ADDSDeployment;Install-ADDSForest -CreateDNSDelegation:$False -DatabasePath "C:\Windows\NTDS" -DomainMode "WinThreshold" -DomainName "bastionado.auth.ad" -DomainNetbiosName "bastionado" -ForestMode "WinThreshold" -InstallDNS:$True -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$False -SysVolPath "C:\Windows\SysVol" -force:$true -SafeModeAdministratorPassword (ConvertTo-SecureString "abc123." -AsPlainText -Force) }
   SHELL
 end
