@@ -6,6 +6,7 @@ services:
     args:
      ENVPATH: debian.env
   hostname: debian
+  privileged: true
   networks:
    radius:
     ipv4_address: 192.168.21.10

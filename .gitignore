@@ -1,1 +1,3 @@
 ad/vagrant/.vagrant/
+radius/vagrant/.vagrant/
+radius/vagrant/*.log
