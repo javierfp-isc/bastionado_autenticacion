@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+ debian:
+  build:
+    context: build
+    args:
+     ENVPATH: debian.env
+  hostname: debian
+  networks:
+   radius:
+    ipv4_address: 192.168.21.10
+networks:
+  radius:
+    driver: bridge
+    driver_opts:
+     com.docker.network.bridge.name: auth_radius
+    ipam:
+     config:
+       - subnet: 192.168.21.0/24
