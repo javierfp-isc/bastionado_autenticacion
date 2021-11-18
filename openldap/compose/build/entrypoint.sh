@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Añadimos hostname bastionado.isc al /etc/hosts
+echo "192.168.99.100 bastionado.isc" >> /etc/hosts
+
 #Arranca slapd
 [ -f /usr/sbin/slapd ] && /usr/sbin/slapd
 
