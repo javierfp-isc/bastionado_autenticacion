@@ -27,7 +27,7 @@ vagrantup: composeup
 	cd vagrant && vagrant up
 composeup:	
 	docker-compose -p ${PROJECT} -f compose/docker-compose.yml up -d
-
+	
 vagrantdelete:
 	cd vagrant && vagrant destroy -f
 composedelete:

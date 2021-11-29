@@ -10,6 +10,14 @@ services:
   networks:
    radius:
     ipv4_address: 192.168.21.10
+ foo:
+  build:
+    context: build
+    args:
+     ENVPATH: debian.env
+  hostname: foo
+  networks:
+   radiuswan:
 networks:
   radius:
     driver: bridge
@@ -18,3 +26,10 @@ networks:
     ipam:
      config:
        - subnet: 192.168.21.0/24
+  radiuswan:
+    driver: bridge
+    driver_opts:
+     com.docker.network.bridge.name: auth_radiuswan
+    ipam:
+     config:
+       - subnet: 192.168.22.0/24
