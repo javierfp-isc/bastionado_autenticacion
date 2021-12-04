@@ -24,6 +24,7 @@ ls:
 
 #Requisitos
 vagrantup: composeup
+	sed -i "s/<ipvlan_bridge>/di-$(shell docker network ls | grep auth_radius | cut -d' ' -f1)/" vagrant/Vagrantfile
 	cd vagrant && vagrant up
 composeup:	
 	docker-compose -p ${PROJECT} -f compose/docker-compose.yml up -d

@@ -1,18 +1,11 @@
 machines=[
   {
-    :hostname => "debiandesktop",
-    :box => "debian_10.7.0_desktop",
-    :ram => 2048,
-    :cpu => 1,
-    :bridgelan => "auth_radius"
-  },
-  {
     :hostname => "pfsenseradius",
     :box => "pfsense_2.5.1",
     :ram => 2048,
     :cpu => 1,
-    :bridgelan => "auth_radius",
-    :bridgewan => "auth_radiuswan"
+    :bridgelan => "<ipvlan_bridge>",
+#    :bridgewan => "auth_radiuswan"
   }
 ]
 
