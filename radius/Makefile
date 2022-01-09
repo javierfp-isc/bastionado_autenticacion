@@ -32,9 +32,11 @@ composeup:
 vagrantdelete:
 	cd vagrant && vagrant destroy -f
 composedelete:
+	sed -i "s/<ipvlan_bridge>/di-$(shell docker network ls | grep auth_radius | cut -d' ' -f1)/" vagrant/Vagrantfile
 	docker-compose -p ${PROJECT} -f compose/docker-compose.yml down --rmi all -v
 
 composedown:
+	sed -i "s/<ipvlan_bridge>/di-$(shell docker network ls | grep auth_radius | cut -d' ' -f1)/" vagrant/Vagrantfile
 	docker-compose -p ${PROJECT} -f compose/docker-compose.yml down
 
 vagrantstart: composestart
