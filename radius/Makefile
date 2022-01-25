@@ -28,6 +28,7 @@ vagrantup: composeup
 	cd vagrant && vagrant up
 composeup:	
 	docker-compose -p ${PROJECT} -f compose/docker-compose.yml up -d
+	-xhost si:localuser:root
 	
 vagrantdelete:
 	cd vagrant && vagrant destroy -f
@@ -42,7 +43,8 @@ composedown:
 vagrantstart: composestart
 	cd vagrant && vagrant up
 composestart:
-	docker-compose -p ${PROJECT} -f compose/docker-compose.yml start	
+	docker-compose -p ${PROJECT} -f compose/docker-compose.yml start
+	-xhost si:localuser:root	
 
 vagrantstop: composestop
 	cd vagrant && vagrant halt
