@@ -6,12 +6,13 @@ services:
     args:
      ENVPATH: debian.env
   hostname: debian
+  cap_add:
+  - ALL
   environment:
    - DISPLAY=${DISPLAY}
   volumes:
    - /tmp/.X11-unix:/tmp/.X11-unix
    - /lib/modules:/lib/modules
-  privileged: true
   networks:
    radius:
     ipv4_address: 192.168.21.10
