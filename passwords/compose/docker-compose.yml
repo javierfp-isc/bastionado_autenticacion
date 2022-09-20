@@ -7,3 +7,7 @@ services:
     args:
      ENVPATH: kali.env
   hostname: kali
+ victima:
+  image: debian:bullseye
+  hostname: victima
+  command: /bin/bash -c "while true;do sleep 5;done"
