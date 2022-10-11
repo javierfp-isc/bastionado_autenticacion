@@ -1,0 +1,35 @@
+version: '3.5'
+services:
+#Services
+  redmine:
+    image: sameersbn/redmine:4.2.1-1
+    hostname: redmine
+    ports:
+      - 8010:80
+    volumes:
+      - redminedata:/home/redmine/data
+    environment:
+      DB_ADAPTER: mysql2
+      DB_HOST: db
+      DB_NAME: redmine_db
+      DB_USER: redmine
+      DB_PASS: abc123.
+      REDMINE_PORT: 80
+      REDMINE_HTTPS: "false"
+  db:
+    image: sameersbn/mysql:5.7.22-1
+    hostname: db
+    environment:
+      DB_NAME: redmine_db
+      DB_USER: redmine
+      DB_PASS: abc123.
+  nginx:
+   image: debian:bullseye
+   hostname: nginx
+   command: /bin/bash -c "while true;do sleep 5;done"
+   ports:
+     - 80:80
+     - 443:443
+volumes:
+  redminedata:
+
