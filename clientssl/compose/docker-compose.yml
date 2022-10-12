@@ -27,7 +27,7 @@ services:
   nginx:
    image: debian:bullseye
    hostname: nginx
-   command: /bin/bash -c "while true;do sleep 5;done"
+   command: /bin/bash -c "([ -d /etc/nginx ] && service nginx start ) ; while true;do sleep 5;done"
    ports:
      - 80:80
      - 443:443
