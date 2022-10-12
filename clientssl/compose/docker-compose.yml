@@ -16,6 +16,7 @@ services:
       DB_PASS: abc123.
       REDMINE_PORT: 80
       REDMINE_HTTPS: "false"
+    command: /bin/bash -c "chown -R redmine:redmine /home/redmine && /usr/sbin/entrypoint.sh app:start"
   db:
     image: sameersbn/mysql:5.7.22-1
     hostname: db
