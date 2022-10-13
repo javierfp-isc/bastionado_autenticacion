@@ -20,6 +20,12 @@ services:
     args:
      ENVPATH: cliente.env
   hostname: cliente
+  environment:
+   - DISPLAY=${DISPLAY}
+  cap_add:
+   - ALL
+  volumes:
+   - /tmp/.X11-unix:/tmp/.X11-unix
   networks:
    ldap:
 networks:
