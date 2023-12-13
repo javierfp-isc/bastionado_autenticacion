@@ -12,6 +12,7 @@ services:
     ipv4_address: 192.168.98.100
   volumes:
    - kerberosdata:/var/kerberos
+   - kerbshare:/var/kerbshare
  cliente:
   build:
     context: build
@@ -20,6 +21,8 @@ services:
   hostname: cliente
   networks:
    kerberos:
+  volumes:
+   - kerbshare:/var/kerbshare
  ssh:
   build:
     context: build
@@ -29,6 +32,8 @@ services:
   networks:
    kerberos:
     ipv4_address: 192.168.98.90
+  volumes:
+   - kerbshare:/var/kerbshare
 networks:
   kerberos:
     driver: bridge
@@ -39,3 +44,4 @@ networks:
        - subnet: 192.168.98.0/24
 volumes:
  kerberosdata:
+ kerbshare:
