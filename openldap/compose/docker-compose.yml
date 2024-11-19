@@ -5,6 +5,8 @@ services:
     context: build
     args:
      ENVPATH: openldap.env
+  extra_hosts:
+  - "bastionado.isc:127.0.0.1"
   hostname: openldap
   ports:
   - "10000:10000"
@@ -18,6 +20,8 @@ services:
     context: build
     args:
      ENVPATH: cliente.env
+  extra_hosts:
+  - "bastionado.isc:192.168.99.100"
   hostname: cliente
   environment:
    - DISPLAY=${DISPLAY}
